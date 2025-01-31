@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Library</title>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <img src="images/logo.svg" alt="logo">
+        </div>
+        <div>Library</div>
+    </div>
+    <div class="content">
+        <button class="AddBook"> + Add Book</button>
+        <div id="overlay"></div>
+    
+        <div id="popup">
+            <h1>Add New Book</h1>
+            <form>
+                <label for="book-title">
+                    <input type="text" name="book-title" id="book-title" placeholder="Title" required>
+                </label>
+                <label for="book-author">
+                    <input type="text" name="book-author" id="book-author" placeholder="Author" required>
+                </label>
+                <label for="book-pages">
+                    <input type="number" name="book-pages" id="book-pages" placeholder="Pages" min="1" required>
+                </label>
+                <div class="check-field">
+                    <label for="book-read">Read?</label>
+                    <input type="checkbox" name="book-read" id="book-read">
+                </div>
+                <button type="submit" id="submit-form">Submit</button>
+            </form>
+            <button class="cancel">Cancel</button>
+        </div>
+
+        <div class="cards">
+            <div class="book-card">
+                <div class="book-header">
+                    Book Details
+                </div>
+                <div class="book-content">
+                    <div class="book-details">
+                        <div class="book-title">The Great Gatsby</div>
+                        <div class="book-author">F. Scott Fitzgerald</div>
+                        <div class="book-pages">Pages: 180</div>
+                    </div>
+                    <div class="book-actions">
+                        <div class="read-toggle">
+                            <input type="checkbox" id="readToggle">
+                            <label for="readToggle">Mark as Read</label>
+                        </div>
+                        <button class="remove-btn">Remove</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        Copyright © 2025 Ayaan-Sheik
+        <a href="https://github.com/Ayaan-sheik">
+            <img src="images/github-mark.svg" class="github-mark">
+        </a>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
