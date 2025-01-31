@@ -136,8 +136,10 @@ body {
 .footer {
     background-color: #e1e9e3d2;
     padding: 15px;
-    text-align: center;
     align-items: center;
+    justify-content: center;
+    display: flex;
+    gap: 10px;
 }
 
 /* book cards design*/
@@ -217,6 +219,6 @@ body {
 }
 
 .github-mark{
-    height:55px;
+    height:40px;
     width: auto;
 }
