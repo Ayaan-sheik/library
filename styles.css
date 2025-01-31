@@ -5,6 +5,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #D4D4D2;
+    max-width:100vw;
 }
 .header {
     background-color: #e1e9e3d2;
@@ -130,6 +131,8 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    gap: 25px;
+    flex-wrap: wrap;
 }
 
 
