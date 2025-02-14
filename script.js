@@ -18,27 +18,32 @@ overlay.addEventListener('click', () => {
     overlay.style.display = 'none';
 });
 
-
 const myLibrary = [];
 
-function AddBook(title ,author , pages , read){
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
+
+    toggleRead() {
+        this.read = !this.read;
+    }
 }
 
-function addBookToLibrary(title ,author , pages , read){
-    const newBook = new AddBook(title ,author , pages , read)
+function addBookToLibrary(title, author, pages, read) {
+    const newBook = new Book(title, author, pages, read);
     myLibrary.push(newBook);
     displayBooks();
 }
 
-function displayBooks(){
+function displayBooks() {
     const cardsContainer = document.querySelector('.cards');
     // Clear existing cards
     cardsContainer.innerHTML = '';
-
+    
     // Create a card for each book in the library
     myLibrary.forEach((book, index) => {
         const bookCard = document.createElement('div');
@@ -55,7 +60,7 @@ function displayBooks(){
                 </div>
                 <div class="book-actions">
                     <div class="read-toggle">
-                        <input type="checkbox" id="readToggle${index}" ${book.read ? 'checked' : ''}>
+                        <input type="checkbox" class="read-checkbox" data-index="${index}" id="readToggle${index}" ${book.read ? 'checked' : ''}>
                         <label for="readToggle${index}">Mark as Read</label>
                     </div>
                     <button class="remove-btn" data-index="${index}">Remove</button>
@@ -65,30 +70,26 @@ function displayBooks(){
         cardsContainer.appendChild(bookCard);
     });
 
+    // Add event listeners for remove buttons
     const removeButtons = document.querySelectorAll('.remove-btn');
     removeButtons.forEach(button => {
         button.addEventListener('click', () => {
-            const index = button.getAttribute('data-index');
+            const index = parseInt(button.getAttribute('data-index'));
             myLibrary.splice(index, 1);
             displayBooks();
         });
-    })
+    });
 
+    // Add event listeners for read toggles
     const readToggles = document.querySelectorAll('.read-checkbox');
     readToggles.forEach(toggle => {
         toggle.addEventListener('change', () => {
-            const index = toggle.getAttribute('data-index');
+            const index = parseInt(toggle.getAttribute('data-index'));
             myLibrary[index].toggleRead();
-            displayBooks(); // Refresh UI to reflect changes
+            displayBooks();
         });
     });
 }
-
-
-
-AddBook.prototype.toggleRead = function () {
-    this.read = !this.read; 
-};
 
 const form = document.querySelector('form');
 form.addEventListener('submit', (e) => {
